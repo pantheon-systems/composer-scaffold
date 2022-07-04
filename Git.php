@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Composer\Plugin\Scaffold;
+namespace Pantheon\Composer\Plugin\Scaffold;
 
 use Composer\IO\IOInterface;
 use Composer\Util\ProcessExecutor;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\Composer\Plugin\Scaffold\Operations;
+namespace Pantheon\Composer\Plugin\Scaffold\Operations;
 
-use Drupal\Composer\Plugin\Scaffold\ScaffoldFilePath;
+use Pantheon\Composer\Plugin\Scaffold\ScaffoldFilePath;
 
 /**
  * Provides default behaviors for operations.

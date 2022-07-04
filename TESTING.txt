@@ -11,7 +11,7 @@ https://www.drupal.org/project/drupal/git-instructions
 You can find more information about running PHPUnit tests with Drupal here:
 https://www.drupal.org/node/2116263
 
-Each component in the Drupal\Composer\Plugin namespace has its own annotated test
+Each component in the Pantheon\Composer\Plugin namespace has its own annotated test
 group. You can use this group to run only the tests for this component. Like
 this:
 

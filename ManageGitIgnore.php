@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Composer\Plugin\Scaffold;
+namespace Pantheon\Composer\Plugin\Scaffold;
 
 use Composer\IO\IOInterface;
 
@@ -41,10 +41,10 @@ class ManageGitIgnore {
   /**
    * Manages gitignore files.
    *
-   * @param \Drupal\Composer\Plugin\Scaffold\Operations\ScaffoldResult[] $files
+   * @param \Pantheon\Composer\Plugin\Scaffold\Operations\ScaffoldResult[] $files
    *   A list of scaffold results, each of which holds a path and whether
    *   or not that file is managed.
-   * @param \Drupal\Composer\Plugin\Scaffold\ScaffoldOptions $options
+   * @param \Pantheon\Composer\Plugin\Scaffold\ScaffoldOptions $options
    *   Configuration options from the composer.json extras section.
    */
   public function manageIgnored(array $files, ScaffoldOptions $options) {
@@ -76,7 +76,7 @@ class ManageGitIgnore {
   /**
    * Determines whether we should manage gitignore files.
    *
-   * @param \Drupal\Composer\Plugin\Scaffold\ScaffoldOptions $options
+   * @param \Pantheon\Composer\Plugin\Scaffold\ScaffoldOptions $options
    *   Configuration options from the composer.json extras section.
    *
    * @return bool

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Composer\Plugin\Scaffold;
+namespace Pantheon\Composer\Plugin\Scaffold;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventDispatcher;
@@ -8,9 +8,9 @@ use Composer\Installer\PackageEvent;
 use Composer\IO\IOInterface;
 use Composer\Package\PackageInterface;
 use Composer\Util\Filesystem;
-use Drupal\Composer\Plugin\Scaffold\Operations\OperationData;
-use Drupal\Composer\Plugin\Scaffold\Operations\OperationFactory;
-use Drupal\Composer\Plugin\Scaffold\Operations\ScaffoldFileCollection;
+use Pantheon\Composer\Plugin\Scaffold\Operations\OperationData;
+use Pantheon\Composer\Plugin\Scaffold\Operations\OperationFactory;
+use Pantheon\Composer\Plugin\Scaffold\Operations\ScaffoldFileCollection;
 
 /**
  * Core class of the plugin.
@@ -25,12 +25,12 @@ class Handler {
   /**
    * Composer hook called before scaffolding begins.
    */
-  const PRE_DRUPAL_SCAFFOLD_CMD = 'pre-drupal-scaffold-cmd';
+  const PRE_COMPOSER_SCAFFOLD_CMD = 'pre-composer-scaffold-cmd';
 
   /**
    * Composer hook called after scaffolding completes.
    */
-  const POST_DRUPAL_SCAFFOLD_CMD = 'post-drupal-scaffold-cmd';
+  const POST_COMPOSER_SCAFFOLD_CMD = 'post-composer-scaffold-cmd';
 
   /**
    * The Composer service.
@@ -49,21 +49,21 @@ class Handler {
   /**
    * The scaffold options in the top-level composer.json's 'extra' section.
    *
-   * @var \Drupal\Composer\Plugin\Scaffold\ManageOptions
+   * @var \Pantheon\Composer\Plugin\Scaffold\ManageOptions
    */
   protected $manageOptions;
 
   /**
    * The manager that keeps track of which packages are allowed to scaffold.
    *
-   * @var \Drupal\Composer\Plugin\Scaffold\AllowedPackages
+   * @var \Pantheon\Composer\Plugin\Scaffold\AllowedPackages
    */
   protected $manageAllowedPackages;
 
   /**
    * The list of listeners that are notified after a package event.
    *
-   * @var \Drupal\Composer\Plugin\Scaffold\PostPackageEventListenerInterface[]
+   * @var \Pantheon\Composer\Plugin\Scaffold\PostPackageEventListenerInterface[]
    */
   protected $postPackageListeners = [];
 
@@ -116,7 +116,7 @@ class Handler {
    *   The package file mappings array keyed by destination path and the values
    *   are operation metadata arrays.
    *
-   * @return \Drupal\Composer\Plugin\Scaffold\Operations\OperationInterface[]
+   * @return \Pantheon\Composer\Plugin\Scaffold\Operations\OperationInterface[]
    *   A list of scaffolding operation objects
    */
   protected function createScaffoldOperations(PackageInterface $package, array $package_file_mappings) {
@@ -144,7 +144,7 @@ class Handler {
 
     // Call any pre-scaffold scripts that may be defined.
     $dispatcher = new EventDispatcher($this->composer, $this->io);
-    $dispatcher->dispatch(self::PRE_DRUPAL_SCAFFOLD_CMD);
+    $dispatcher->dispatch(self::PRE_COMPOSER_SCAFFOLD_CMD);
 
     // Fetch the list of file mappings from each allowed package and normalize
     // them.
@@ -179,7 +179,7 @@ class Handler {
     $gitIgnoreManager->manageIgnored($scaffold_results, $scaffold_options);
 
     // Call post-scaffold scripts.
-    $dispatcher->dispatch(self::POST_DRUPAL_SCAFFOLD_CMD);
+    $dispatcher->dispatch(self::POST_COMPOSER_SCAFFOLD_CMD);
   }
 
   /**
@@ -201,7 +201,7 @@ class Handler {
    *   A multidimensional array of file mappings, as returned by
    *   self::getAllowedPackages().
    *
-   * @return \Drupal\Composer\Plugin\Scaffold\Operations\OperationInterface[][]
+   * @return \Pantheon\Composer\Plugin\Scaffold\Operations\OperationInterface[][]
    *   An array of destination paths => scaffold operation objects.
    */
   protected function getFileMappingsFromPackages(array $allowed_packages) {
@@ -218,7 +218,7 @@ class Handler {
    * @param \Composer\Package\PackageInterface $package
    *   The Composer package from which to get the file mappings.
    *
-   * @return \Drupal\Composer\Plugin\Scaffold\Operations\OperationInterface[]
+   * @return \Pantheon\Composer\Plugin\Scaffold\Operations\OperationInterface[]
    *   An array of destination paths => scaffold operation objects.
    */
   protected function getPackageFileMappings(PackageInterface $package) {

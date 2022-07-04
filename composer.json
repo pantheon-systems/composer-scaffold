@@ -1,24 +1,25 @@
 {
-  "name": "drupal/core-composer-scaffold",
+  "name": "pantheon-systems/composer-scaffold",
   "description": "A flexible Composer project scaffold builder.",
   "type": "composer-plugin",
   "keywords": ["drupal"],
-  "homepage": "https://www.drupal.org/project/drupal",
+  "homepage": "https://github.com/pantheon-systems/composer-scaffold",
   "license": "GPL-2.0-or-later",
   "require": {
     "composer-plugin-api": "^1 || ^2",
     "php": ">=7.3.0"
   },
   "conflict": {
-    "drupal-composer/drupal-scaffold": "*"
+    "drupal-composer/drupal-scaffold": "*",
+    "drupal/core-composer-scaffold": "*"
   },
   "autoload": {
     "psr-4": {
-      "Drupal\\Composer\\Plugin\\Scaffold\\": ""
+      "Pantheon\\Composer\\Plugin\\Scaffold\\": ""
     }
   },
   "extra": {
-    "class": "Drupal\\Composer\\Plugin\\Scaffold\\Plugin",
+    "class": "Pantheon\\Composer\\Plugin\\Scaffold\\Plugin",
     "branch-alias": {
       "dev-master": "1.0.x-dev"
     }
