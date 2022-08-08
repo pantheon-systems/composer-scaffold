@@ -1,5 +1,10 @@
 # Composer Scaffold
 
+[![Deprecated](https://img.shields.io/badge/Pantheon-Deprecated-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#Deprecated)
+
+## No longer maintained
+This repository has been deprecated and superceded by [WordPress Composer Managed](https://github.com/pantheon-systems/wordpress-composer-managed) itself. WordPress scaffolding is handled in the [`composer.json` file](https://github.com/pantheon-systems/wordpress-composer-managed/blob/default/composer.json) itself.
+
 This project provides a composer plugin for placing scaffold files (like
 `index.php`, `update.php`, …) from the `drupal/core` project into their desired
 location inside the web root. Only individual files may be scaffolded with this
